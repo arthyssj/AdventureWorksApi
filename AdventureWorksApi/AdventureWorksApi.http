@@ -3,4 +3,9 @@
 GET {{AdventureWorksApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
+
+
 ###
+
+GET {{AdventureWorksApi_HostAddress}}/api/productos/ping
+Accept: application/json
