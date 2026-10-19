@@ -9,3 +9,8 @@ Accept: application/json
 
 GET {{AdventureWorksApi_HostAddress}}/api/productos/ping
 Accept: application/json
+###
+
+
+Get {{AdventureWorksApi_HostAddress}}/api/productos/eco/abc
+Accept: application/json

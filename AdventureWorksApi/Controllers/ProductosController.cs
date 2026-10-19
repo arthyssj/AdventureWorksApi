@@ -18,6 +18,16 @@ namespace AdventureWorksApi.Controllers
                     });
 
         }
+        [HttpGet("eco/{id}")]
+        public IActionResult Eco(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest(new { mensaje = "El id no puede ser menor o igual a cero" });
+            }
+            return Ok(new { id });
+
+        }
 
     }
 }
