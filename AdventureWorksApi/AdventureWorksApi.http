@@ -12,5 +12,11 @@ Accept: application/json
 ###
 
 
-Get {{AdventureWorksApi_HostAddress}}/api/productos/eco/abc
+Get {{AdventureWorksApi_HostAddress}}/api/productos/eco/91
+Accept: application/json
+
+
+###
+
+Get {{AdventureWorksApi_HostAddress}}/api/productos/top
 Accept: application/json
