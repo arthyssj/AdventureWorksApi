@@ -20,3 +20,8 @@ Accept: application/json
 
 Get {{AdventureWorksApi_HostAddress}}/api/productos/top
 Accept: application/json
+
+###
+
+GET {{AdventureWorksApi_HostAddress}}/api/productos/1
+Accept: application/json

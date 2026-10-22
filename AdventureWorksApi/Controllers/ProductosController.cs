@@ -51,5 +51,21 @@ namespace AdventureWorksApi.Controllers
 
         }
 
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> PorId(int id)
+        {
+            using (var conn = new SqlConnection(_config.GetConnectionString("AdventureWorks")))
+            {
+                var producto = await conn.QueryFirstOrDefaultAsync <ProductoDto>("SELECT Name FROM Production.Product WHERE ProductID = @id", new { id });
+
+                if (producto is null)
+                {
+                    return NotFound(new { mensaje = "Producto no encontrado" });
+                }
+
+                return Ok(producto);
+            }
+        }
+
     }
 }
