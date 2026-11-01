@@ -23,5 +23,9 @@ Accept: application/json
 
 ###
 
-GET {{AdventureWorksApi_HostAddress}}/api/productos/1
+GET {{AdventureWorksApi_HostAddress}}/api/productos/1999
+Accept: application/json
+
+###
+GET {{AdventureWorksApi_HostAddress}}/api/productos?precioMin=100&precioMax=10000
 Accept: application/json

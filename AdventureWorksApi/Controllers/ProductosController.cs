@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using Dapper;
 using AdventureWorksApi.Models;
+using System.Data;
 
 namespace AdventureWorksApi.Controllers
 {
@@ -67,5 +68,19 @@ namespace AdventureWorksApi.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> PorRango([FromQuery] decimal precioMin = 0, [FromQuery] decimal? precioMax = 0)
+        {
+            using (var conn = new SqlConnection(_config.GetConnectionString("AdventureWorks"))){
+
+                var productos = await conn.QueryAsync<ProductoDto>("usp_ProductosPorRango", 
+                    new { @PrecioMin = @precioMin, @PrecioMax = @precioMax}, 
+                    commandType: CommandType.StoredProcedure);
+            
+
+                return Ok(productos);
+
+            }
+        }
     }
 }
