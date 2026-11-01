@@ -31,5 +31,11 @@ GET {{AdventureWorksApi_HostAddress}}/api/productos?precioMin=100&precioMax=1000
 Accept: application/json
 
 ###
-GET {{AdventureWorksApi_HostAddress}}/api/clientes/11000/resumen
+GET {{AdventureWorksApi_HostAddress}}/api/clientes/1000/resumen
 Accept: application/json
+
+###
+PUT {{AdventureWorksApi_HostAddress}}/api/productos/0/precio
+Content-Type: application/json
+
+{ "nuevoprecio": 0}

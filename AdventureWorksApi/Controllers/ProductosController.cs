@@ -82,5 +82,38 @@ namespace AdventureWorksApi.Controllers
 
             }
         }
+
+
+        [HttpPut("{id:int}/precio")]
+        public async Task<IActionResult> ActualizarPrecio(int id, [FromBody] ActualizarPrecioDto dto)
+        {
+            using (var conn = new SqlConnection(_config.GetConnectionString("AdventureWorks")))
+            {
+                var p = new DynamicParameters();
+                p.Add("ProductID", id);
+                p.Add("NuevoPrecio", dto.NuevoPrecio);
+                p.Add("Mensaje", direction: ParameterDirection.Output, dbType: DbType.String, size: 100);
+
+                try
+                {
+
+                await conn.ExecuteAsync("usp_ActualizarPrecioProducto", p, commandType: CommandType.StoredProcedure);
+                    var mensaje = p.Get<string>("Mensaje");
+                    return Ok(new { mensaje });
+
+                }
+                catch (SqlException ex) when (ex.Number == 50001)
+                {
+                    return NotFound(new { mensaje = ex.Message });
+                }
+                catch (SqlException ex) when (ex.Number == 50002)
+                {
+                    return BadRequest(new { mensaje = ex.Message });
+                }
+
+                
+
+            }
+        }
     }
 }
